@@ -1,0 +1,299 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+$primary: #000000;
+$secondary: #FFFFFF;
+$info: #777777;
+
+$fFamily : 'Montserrat', sans-serif;
+
+body{
+    font-family: $fFamily;
+    font-size: 17px;
+    font-weight: 200;
+    color: $secondary;
+    background: $primary;
+}
+h1, h2, h3, h4, h5, h6{
+    font-weight: 700;
+}
+
+// BOOTSTRAP CUSTOM RESETS
+.modal-backdrop.show{
+    opacity: 0.8 !important;
+    @include media-breakpoint-up(sm){
+        opacity: 0 !important;
+    }
+}
+
+//CUSTOM STYLES
+@mixin btn-million($background-color,$border-color) {
+    background: $background-color;
+    text-transform: uppercase;
+    border: 1px solid $border-color;
+    color: $border-color;
+    border-radius: 0;
+    padding: 1em 2.5em;
+}
+
+header.header{
+    background: $primary;
+    .navbar-brand{
+        overflow: hidden;
+        span{
+            display: none;
+        }
+    }
+    .header__search{
+        text-decoration: none;
+        @include media-breakpoint-up(sm){
+            margin-left: 1em;
+        }
+        i{
+            color: $secondary;
+            font-size: 1em;
+        }
+        span{
+            display: none;
+        }
+    }
+    .header__select-lang{
+        display: inline-block;
+        position: relative;
+        padding: .5em;
+        select{
+            display: inline-block;
+            cursor: pointer;
+            outline: 0;
+            border: 0;
+            border-radius: 0;
+            background: $primary;
+            color: $secondary;
+            appearance: none;
+            &::-ms-expand{
+                display: none;
+            }
+            &:hover, &:focus{
+                color: $secondary;
+                background: $primary;
+            }
+            &:disabled{
+                opacity: 0.5;
+                pointer-events: none;
+            }
+        }
+        &:after{
+            width: 0;
+            height: 0;
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 0;
+            pointer-events: none;
+            border-style: solid;
+            border-width: 5px 3px 0 3px;
+            border-color: $secondary transparent transparent transparent;
+            transform: translate(0, -50%);
+        }
+    }
+}
+
+#modal--search{
+    .modal-content{
+        background: none;
+        border: none;
+        .btn-close{
+            position: absolute;
+            right: 12px;
+            top: 34px;
+            z-index: 1;
+        }
+        .modal-body{
+            .nav-tabs{
+                border: none;
+                li{
+                    button{
+                        background-color: transparent;
+                        border: none;
+                        color: $secondary;
+                        &.active{
+                            border-bottom: 2px solid $secondary;
+                        }
+                    }
+                }
+            }
+            .tab-content{
+                background: rgba($color: $primary, $alpha: 0.9);
+                padding: calc(100% / 24) calc(100% / 12);
+                @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+                    background: rgba($color: $primary, $alpha: 0.3);
+                    backdrop-filter: blur(8px);
+                }
+                // .tab-pane{
+                //     background: peru;
+                // }
+                .search--input-container{
+                    text-align: center;
+                    margin: .6em 0;
+                    // &:nth-of-type(2){
+                    //     @include media-breakpoint-up(lg){
+                    //         margin-left: .6em;
+                    //         margin-right: .6em;
+                    //     }
+                    // }
+                    .search--input{
+                        width: 100%;
+                        background: none;
+                        color: $secondary;
+                        border: 1px solid $secondary;
+                        padding: .5em 1em;
+                    }
+                    .irs{
+                        font-family: $fFamily;
+                        font-weight: 200;
+                        .irs-line, .irs-bar{
+                            height: 2px;
+                        }
+                        .irs-line{
+                            background-color: $info;
+                        }
+                        .irs-bar{
+                            background-color: $secondary;
+                        }
+                        .irs-from, .irs-to{
+                            background: none !important;
+                            top: 52px;
+                            &:before{
+                                display: none;
+                            }
+                        }
+                        .irs-min, .irs-max{
+                            display: none;
+                        }
+                        .irs-handle{
+                            width: 15px;
+                            height: 15px;
+                            background: $info;
+                            border: 2px solid $secondary;
+                            top: 29px;
+                        }
+                    }
+                }
+                .btn{
+                    @include btn-million($primary, $secondary);
+                    margin-top: calc(100% / 24) !important;
+                }
+            }
+        }
+    }
+}
+
+#carousel-home{
+    .carousel-inner{
+        .carousel-item{
+            height: 100vh;
+            overflow: hidden;
+            img{
+                width: auto !important;
+                height: 100%;
+                @include media-breakpoint-up(xl){
+                    width: 100% !important;
+                    height: auto;
+                }
+            }
+            .carousel-caption{
+                width: 100%;
+                text-align: left;
+                position: absolute;
+                top: 50%;
+                left: 1em;
+                transform: translateY(-50%);
+                h5{
+                    // font-size: 3.882em;
+                    line-height: 1em;
+                    font-size: 11vw;
+                    @include media-breakpoint-up(md){
+                        font-size: 7vw;
+                    }
+                    @include media-breakpoint-up(lg){
+                        font-size: 5vw;
+                    }
+                    @include media-breakpoint-up(xl){
+                        font-size: 4vw;
+                    }
+                }
+                p{
+                    // font-size: 1.176em;
+                    font-size: 4vw;
+                    @include media-breakpoint-up(md){
+                        font-size: 2.5vw;
+                    }
+                    @include media-breakpoint-up(lg){
+                        font-size: 1.8vw;
+                    }
+                    @include media-breakpoint-up(xl){
+                        font-size: 1.3vw;
+                    }
+                }
+                .btn{
+                    @include btn-million($primary, $secondary);
+                    font-size: 3.5vw;
+                    @include media-breakpoint-up(md){
+                        font-size: 1.9vw;
+                    }
+                    @include media-breakpoint-up(lg){
+                        font-size: 1.4vw;
+                    }
+                    @include media-breakpoint-up(xl){
+                        font-size: .9vw;
+                    }
+                }
+            }
+        }
+    }
+}
+footer.footer{
+    .footer__logo{
+        margin: 3em 0;
+    }
+    .footer__col{
+        margin-bottom: 2.5em;
+        h6{
+            margin-bottom: 1.5em;
+        }
+        ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            line-height: 2em;
+            a{
+                color: $secondary;
+                text-decoration: none;
+                &:hover{
+                    color: $info;
+                }
+            }
+            &.menu__social{
+                li{
+                    display: inline-block;
+                    margin: 2em .4em 0;
+                }
+            }
+        }
+        &:nth-last-of-type(3){
+            margin-top: 2.5em;
+        }
+        &:nth-last-of-type(2){
+            ul{
+                li:last-child{
+                    margin-top: 2em;
+                }
+            }
+        }
+    }
+    .footer__copyright{
+        font-size: .7em;
+        text-align: center;
+        border-top: 1px solid $info;
+        padding: 2.5em 0 1.5em;
+    }
+}
